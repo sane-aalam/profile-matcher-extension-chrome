@@ -1,0 +1,7 @@
+{
+  "headline": "Frontend Developer at ABC Corp",
+  "about": "Passionate about building scalable web apps.",
+  "experience": ["ABC Corp", "XYZ Pvt Ltd"],
+  "education": ["B.Tech Computer Science"],
+  "skills": ["JavaScript", "React", "CSS"]
+}

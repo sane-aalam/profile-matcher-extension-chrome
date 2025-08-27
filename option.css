@@ -1,0 +1,92 @@
+/* Reset */
+body, h2, label, input, button, p {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Centering the whole container */
+body {
+  font-family: "Segoe UI", Arial, sans-serif;
+  background: #f3f2ef;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+/* Card style container */
+.container {
+  background: #fff;
+  padding: 25px 30px;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  width: 350px;
+}
+
+/* Heading */
+h2 {
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 20px;
+  color: #0a66c2;
+  text-align: center;
+}
+
+/* Form group */
+.form-group {
+  margin-bottom: 15px;
+}
+
+label {
+  font-size: 14px;
+  font-weight: 500;
+  color: #444;
+  margin-bottom: 5px;
+  display: block;
+}
+
+input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 14px;
+  transition: border 0.3s ease, box-shadow 0.3s ease;
+}
+
+input:focus {
+  border-color: #0a66c2;
+  outline: none;
+  box-shadow: 0 0 6px rgba(10, 102, 194, 0.3);
+}
+
+/* Button */
+button {
+  width: 100%;
+  padding: 12px;
+  background: #0a66c2;
+  border: none;
+  color: white;
+  font-weight: 600;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 15px;
+  transition: background 0.3s ease, transform 0.1s ease;
+}
+
+button:hover {
+  background: #004182;
+}
+
+button:active {
+  transform: scale(0.98);
+}
+
+/* Small note */
+.note {
+  font-size: 12px;
+  color: #666;
+  margin-top: 10px;
+  text-align: center;
+}

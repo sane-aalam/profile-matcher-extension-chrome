@@ -1,0 +1,19 @@
+{
+  "manifest_version": 3,
+  "name": "Profile Matcher",
+  "version": "1.0",
+  "description": "Match LinkedIn profiles with your own and get a similarity score.",
+  "permissions": ["storage", "activeTab", "scripting"],
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": "logo.png"
+  },
+  "options_page": "options.html",
+  "content_scripts": [
+    {
+      "matches": ["https://www.linkedin.com/in/*"],
+      "js": ["content.js"]
+    }
+  ]
+}
+
