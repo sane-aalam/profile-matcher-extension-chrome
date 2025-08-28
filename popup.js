@@ -1,7 +1,7 @@
 document.getElementById("calculate").addEventListener("click", async () => {
   const resultDiv = document.getElementById("result");
   resultDiv.innerHTML =
-    "<p style='color:blue;'>⏳ Fetching LinkedIn profile and comparing...</p>";
+    "<p style='color:blue;'>Fetching LinkedIn profile and comparing...</p>";
 
   let [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
 

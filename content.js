@@ -1,55 +1,57 @@
 function scrapeLinkedInProfile() {
   const profile = {};
 
-  // Headline (under name section)
+  // Headline
   profile.headline =
-    document
-      .querySelector(".pv-text-details__left-panel .text-body-medium")
-      ?.innerText.trim() ||
+    document.querySelector(".text-body-medium.break-words")?.innerText.trim() ||
     document.querySelector(".pv-text-details-section h2")?.innerText.trim() ||
     "";
 
-  // About Section
-  profile.about =
-    document
-      .querySelector(".pv-about-section .inline-show-more-text")
-      ?.innerText.trim() ||
-    document
-      .querySelector(
-        "section[data-view-name='profile-about'] .display-flex span.visually-hidden"
+  // About
+  const aboutHeading = Array.from(document.querySelectorAll("h2")).find(
+    (h) => h.innerText.trim().toLowerCase() === "about"
+  );
+  profile.about = aboutHeading
+    ? aboutHeading.closest("section").innerText.trim()
+    : "";
+
+  // Experience
+  const expHeading = Array.from(document.querySelectorAll("h2")).find((h) =>
+    h.innerText.trim().toLowerCase().includes("experience")
+  );
+  profile.experience = expHeading
+    ? Array.from(expHeading.closest("section").querySelectorAll("li")).map(
+        (el) => el.innerText.trim()
       )
-      ?.innerText.trim() ||
-    "";
+    : [];
 
-  // Experience Section
-  profile.experience = Array.from(
-    document.querySelectorAll(
-      "section[data-view-name='profile-experience'] li span.mr1.t-bold span[aria-hidden='true']"
-    )
-  ).map((el) => el.innerText.trim());
+  // Education
+  const eduHeading = Array.from(document.querySelectorAll("h2")).find((h) =>
+    h.innerText.trim().toLowerCase().includes("education")
+  );
+  profile.education = eduHeading
+    ? Array.from(eduHeading.closest("section").querySelectorAll("li")).map(
+        (el) => el.innerText.trim()
+      )
+    : [];
 
-  // Education Section
-  profile.education = Array.from(
-    document.querySelectorAll(
-      "section[data-view-name='profile-education'] li .t-bold span[aria-hidden='true'], \
-     section[data-view-name='profile-education'] li .visually-hidden"
-    )
-  ).map((el) => el.innerText.trim());
+  // Skills
+  const skillsHeading = Array.from(document.querySelectorAll("h2")).find((h) =>
+    h.innerText.trim().toLowerCase().includes("skills")
+  );
+  profile.skills = skillsHeading
+    ? Array.from(skillsHeading.closest("section").querySelectorAll("li")).map(
+        (el) => el.innerText.trim()
+      )
+    : [];
 
-  // Skills Section
-  profile.skills = Array.from(
-    document.querySelectorAll(
-      "section[data-view-name='profile-skills'] li span.visually-hidden, \
-     section[data-view-name='profile-skills'] li .t-bold span[aria-hidden='true']"
-    )
-  ).map((el) => el.innerText.trim());
-
-  console.log("Scraped LinkedIn Profile : ", profile);
+  console.log("Scraped LinkedIn Profile:", profile);
   return profile;
 }
 
-// Listen for popup.js
-chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
+// working of these lines into codebase
+// This code is the bridge between your popup (UI) and the actual page DOM (LinkedIn).
+chrome.runtime.onMessage.addListener(async (request, sender, sendResponse) => {
   if (request.action === "scrapeProfile") {
     const data = scrapeLinkedInProfile();
     sendResponse({ profile: data });
