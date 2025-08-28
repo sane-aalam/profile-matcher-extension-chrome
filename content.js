@@ -1,38 +1,50 @@
 function scrapeLinkedInProfile() {
   const profile = {};
 
-  // Headline
+  // Headline (under name section)
   profile.headline =
-    document.querySelector(".text-body-medium.break-words")?.innerText.trim() ||
+    document
+      .querySelector(".pv-text-details__left-panel .text-body-medium")
+      ?.innerText.trim() ||
     document.querySelector(".pv-text-details-section h2")?.innerText.trim() ||
     "";
 
-  // About
+  // About Section
   profile.about =
     document
-      .querySelector(".pv-shared-text-with-see-more span.visually-hidden")
-      ?.innerText.trim() || "";
+      .querySelector(".pv-about-section .inline-show-more-text")
+      ?.innerText.trim() ||
+    document
+      .querySelector(
+        "section[data-view-name='profile-about'] .display-flex span.visually-hidden"
+      )
+      ?.innerText.trim() ||
+    "";
 
-  // Experience
+  // Experience Section
   profile.experience = Array.from(
     document.querySelectorAll(
-      ".pvs-list__paged-list-item .t-bold span[aria-hidden='true']"
+      "section[data-view-name='profile-experience'] li span.mr1.t-bold span[aria-hidden='true']"
     )
   ).map((el) => el.innerText.trim());
 
-  // Education
+  // Education Section
   profile.education = Array.from(
     document.querySelectorAll(
-      ".pvs-list__paged-list-item .t-bold span[aria-hidden='true']"
+      "section[data-view-name='profile-education'] li .t-bold span[aria-hidden='true'], \
+     section[data-view-name='profile-education'] li .visually-hidden"
     )
   ).map((el) => el.innerText.trim());
 
-  // Skills
+  // Skills Section
   profile.skills = Array.from(
-    document.querySelectorAll(".pvs-list__paged-list-item span.visually-hidden")
+    document.querySelectorAll(
+      "section[data-view-name='profile-skills'] li span.visually-hidden, \
+     section[data-view-name='profile-skills'] li .t-bold span[aria-hidden='true']"
+    )
   ).map((el) => el.innerText.trim());
 
-  console.log("Scraped LinkedIn Profile:", profile);
+  console.log("Scraped LinkedIn Profile : ", profile);
   return profile;
 }
 

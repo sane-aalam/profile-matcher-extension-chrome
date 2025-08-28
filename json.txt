@@ -5,3 +5,4 @@
   "education": ["B.Tech Computer Science"],
   "skills": ["JavaScript", "React", "CSS"]
 }
+// dummy data to understand 

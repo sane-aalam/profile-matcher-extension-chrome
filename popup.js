@@ -23,7 +23,7 @@ document.getElementById("calculate").addEventListener("click", async () => {
   });
 });
 
-// Match Calculation
+// Match Calculation Method to checkout (equal)
 function getMatchScore(myProfile, scraped) {
   let score = 0,
     reason = "";
@@ -57,8 +57,9 @@ function getMatchScore(myProfile, scraped) {
   );
   score += matchedEdu.length * 5;
 
-  // Cap at 100
+  // find the score
   score = Math.min(score, 100);
+  console.log("debug", score);
 
   reason =
     score > 50

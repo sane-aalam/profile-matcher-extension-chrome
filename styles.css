@@ -1,24 +1,86 @@
+/* General Layout */
 body {
-  font-family: Arial, sans-serif;
-  padding: 10px;
-  width: 250px;
+  font-family: "Segoe UI", Roboto, Arial, sans-serif;
+  background: #f4f6f9;
+  margin: 0;
+  padding: 15px;
+  width: 320px;
+  color: #333;
 }
+
+.container {
+  text-align: center;
+}
+
+/* Title */
 h2 {
-  font-size: 18px;
-  margin-bottom: 10px;
+  margin: 0;
+  font-size: 20px;
+  color: #1f6feb;
 }
+
+.subtitle {
+  font-size: 13px;
+  color: #555;
+  margin-bottom: 15px;
+}
+
+/* Button */
 button {
-  background: #0073b1;
-  color: white;
+  background: linear-gradient(135deg, #228be6, #1f6feb);
   border: none;
-  padding: 8px;
-  margin-top: 10px;
+  border-radius: 8px;
+  color: #fff;
+  padding: 10px 15px;
+  font-size: 14px;
+  font-weight: 600;
   cursor: pointer;
-  border-radius: 5px;
+  transition: background 0.3s ease;
+  width: 100%;
 }
+
 button:hover {
-  background: #005582;
+  background: linear-gradient(135deg, #1c7ed6, #1864ab);
 }
-#result {
-  margin-top: 10px;
+
+/* Result Card */
+.card {
+  background: #fff;
+  border-radius: 12px;
+  padding: 12px;
+  margin-top: 15px;
+  text-align: left;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+}
+
+.card h3 {
+  margin: 0 0 8px 0;
+  font-size: 16px;
+  color: #228be6;
+}
+
+.score {
+  font-weight: bold;
+  font-size: 15px;
+  color: #222;
+}
+
+.hidden {
+  display: none;
+}
+
+/* Options Link */
+.options-link {
+  margin-top: 12px;
+  font-size: 13px;
+}
+
+.options-link a {
+  color: #1f6feb;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.options-link a:hover {
+  text-decoration: underline;
 }
